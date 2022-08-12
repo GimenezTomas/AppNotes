@@ -1,0 +1,6 @@
+
+<div class="notes" *ngFor="let note of NotesList">
+    <app-note id=note.status [title]="note.title" [content]="note.content" [id]="note.Notesid" [labelid]="note.labelid" [userid]="note.userid" [archived]="note.status" (deleted)="deleteNote()">
+
+    </app-note>
+</div>

@@ -1,0 +1,18 @@
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div class="preview">
+      <input id="title">
+      <input id="content">
+      <button (click)="addNote()" class="add">Save</button>
+    </div>
+    <select name="" id="combo">
+      <option *ngFor="let label of labels" value={{label.Labelid}}>{{label.title}}</option>
+    </select>
+  </div>
+
+</div>

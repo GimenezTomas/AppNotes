@@ -1,0 +1,18 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<button (click)="modal = true" *ngIf="archived" class="button">+</button>
+<button id="button2" (click)="emit()"class="buttona">Archived Notes</button>
+<button id="button3" *ngIf="!logged" (click)="openLoginModal()"  class="buttonl">LOG IN</button>
+<button id="button3" *ngIf="logged" (click)="logout()"  class="buttonl">LOG OUT</button>
+<div class="box">
+    <div class="container-4">
+      <input type="search" id="search" placeholder="Search..." />
+      <button class="icon" (click)="searchByLabel()"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+<app-notes *ngIf="logged">
+  
+</app-notes>
+
+<app-add-modal *ngIf="modal"></app-add-modal>
+<app-login *ngIf="modalLogin"></app-login>
+
