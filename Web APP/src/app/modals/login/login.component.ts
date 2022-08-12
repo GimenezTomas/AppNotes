@@ -2,7 +2,7 @@ import { HttpSentEvent } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
-import { ModalsService } from 'src/app/services/modals.service';
+import { GlobalVariablesService } from 'src/app/services/global-variables.service';
 
 
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpService, private modalService: ModalsService) {
+  constructor(private fb: FormBuilder, private http: HttpService, private globalVariables: GlobalVariablesService) {
     this.form = this.fb.group({
       username:['', Validators.required],
       password:['',Validators.required],
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   closeLoginModal(){
-    this.modalService.$modalLogin.emit(false)
+    this.globalVariables.$modalLogin.emit(false)
   }
 
   getUser(){
@@ -41,5 +41,5 @@ export class LoginComponent implements OnInit {
     })
   }
 
- 
+
 }

@@ -1,4 +1,12 @@
-body{/* You can add global styles to this file, and also import other style files */
-height: 100vh !important;
-overflow: hidden;
+*{
+  font-family: monospace;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body{
+  margin: 0;
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
 
-  urlNotes='http://localhost:8000/api/notes/';     
+  urlNotes='http://localhost:8000/api/notes/';
   urlUsers='http://localhost:8000/api/users/';
   urlLabels='http://localhost:8000/api/labels/';
   $userid: number = 0
@@ -17,12 +17,12 @@ export class HttpService {
    getNotesList(): Observable<any>{
     return this.http.get(this.urlNotes);
   }
-  
+
   getArchivedNotesList(): Observable<any>{
     return this.http.get(this.urlNotes + 'archived/'+this.$userid+'/null' );
   }
-  
-  
+
+
   getActiveNotesList(): Observable<any>{
     return this.http.get(this.urlNotes + 'active/'+this.$userid+'/null' );
   }
@@ -53,5 +53,5 @@ export class HttpService {
   getLabels(){
     return this.http.get(this.urlLabels)
   }
- 
+
 }

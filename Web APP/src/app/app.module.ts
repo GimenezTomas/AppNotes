@@ -12,6 +12,8 @@ import { AddModalComponent } from './modals/add-modal/add-modal.component';
 import { LoginComponent } from './modals/login/login.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LabelsComponent } from './components/labels/labels.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ArchivedNotesComponent,
     AddModalComponent,
     LoginComponent,
+    LabelsComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,

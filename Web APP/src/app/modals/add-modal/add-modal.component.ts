@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
-import { ModalsService } from 'src/app/services/modals.service';
+import { GlobalVariablesService } from 'src/app/services/global-variables.service';
 
 @Component({
   selector: 'app-add-modal',
@@ -9,22 +9,22 @@ import { ModalsService } from 'src/app/services/modals.service';
 })
 
 export class AddModalComponent implements OnInit {
-  
+
   content: string = ''
   labels: any = []
 
   @Output() deleted = new EventEmitter<boolean>();
 
-  constructor(private modalService: ModalsService, private http: HttpService) { } 
- 
+  constructor(private globalVariables: GlobalVariablesService, private http: HttpService) { }
+
   ngOnInit(): void {
     this.http.getLabels().subscribe( (data: any) => {
       this.labels = data.labels
     })
   }
-  
+
   closeModal(){
-    this.modalService.$modal.emit(false)
+    this.globalVariables.$modal.emit(false)
   }
 
   addNote(){
@@ -42,9 +42,8 @@ export class AddModalComponent implements OnInit {
       console.log(data)
       this.closeModal();
       this.deleted.emit(true);
-
     })
   }
-  
+
 
 }

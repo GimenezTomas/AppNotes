@@ -4,12 +4,13 @@ import { EventEmitter, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 
-export class ModalsService {
+export class GlobalVariablesService {
 
   constructor() { }
 
   $modal = new EventEmitter<any>()
   $archived = new EventEmitter<boolean>()
-  $modalLogin = new EventEmitter<any>()  
+  $modalLogin = new EventEmitter<any>()
   $search = new EventEmitter<any>()
+  $empty = new EventEmitter<any>()
 }

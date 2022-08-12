@@ -1,5 +1,5 @@
 import { Component, EventEmitter } from '@angular/core';
-import { ModalsService } from './services/modals.service';
+import { GlobalVariablesService } from './services/global-variables.service';
 import { HttpService } from './services/http.service';
 
 @Component({
@@ -12,26 +12,28 @@ export class AppComponent {
   modal: boolean = false
   modalLogin: boolean = true
   logged: boolean = false
+  empty: boolean = true
 
-  constructor( private modalService: ModalsService, private http: HttpService ){}
+  constructor( private globalVariables: GlobalVariablesService, private http: HttpService ){}
 
   ngOnInit(){
-    this.modalService.$modal.subscribe((value) => {
+    this.globalVariables.$modal.subscribe((value) => {
       this.modal = value
     })
 
-    this.modalService.$modalLogin.subscribe((value) => {
+    this.globalVariables.$modalLogin.subscribe((value) => {
      if( !value && this.http.$userid != 0 ){
         this.modalLogin = value
+        this.empty = false
         this.logged = true
       }else if(!value && this.http.$userid == 0 ){
         this.logged = false
         this.modalLogin = value
       }
-  
+
     })
 
-    this.modalService.$archived.subscribe( value => {
+    this.globalVariables.$archived.subscribe( value => {
       this.archived = !this.archived
       this.switchNotes(this.archived)
     })
@@ -50,7 +52,7 @@ export class AppComponent {
   }
 
   emit(){
-    this.modalService.$archived.emit(true)
+    this.globalVariables.$archived.emit(true)
   }
 
   logout(){
@@ -66,8 +68,7 @@ export class AppComponent {
 
   searchByLabel(){
     const labelID = (document.getElementById('search') as HTMLInputElement || null )?.value
-    this.modalService.$search.emit(labelID)
+    this.globalVariables.$search.emit(labelID)
     console.log('searching...')
   }
-
 }
