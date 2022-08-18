@@ -42,12 +42,14 @@ var connection_1 = require("../db/connection");
 var note_1 = require("../routes/note");
 var user_1 = require("../routes/user");
 var label_1 = require("../routes/label");
+var auth_1 = require("../routes/auth");
 var Server = /** @class */ (function () {
     function Server() {
         this.paths = {
             notes: '/api/notes',
             users: '/api/users',
-            labels: '/api/labels'
+            labels: '/api/labels',
+            auth: '/api/auth'
         };
         this.app = express();
         this.port = process.env.PORT || '8000';
@@ -83,6 +85,7 @@ var Server = /** @class */ (function () {
         this.app.use(this.paths.notes, note_1["default"]);
         this.app.use(this.paths.users, user_1["default"]);
         this.app.use(this.paths.labels, label_1["default"]);
+        this.app.use(this.paths.auth, auth_1["default"]);
     };
     Server.prototype.listen = function () {
         var _this = this;

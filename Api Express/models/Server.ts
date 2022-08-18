@@ -1,19 +1,21 @@
 const express = require('express') 
 const cors = require('cors')
 
-import db from '../db/connection'
-import notesRoutes from '../routes/note'
-import usersRoutes from '../routes/user'
+import db           from '../db/connection'
+import notesRoutes  from '../routes/note'
+import usersRoutes  from '../routes/user'
 import labelsRoutes from '../routes/label'
+import authRoutes   from '../routes/auth'
 
 class Server{
 
     private app: any
     private port: string
     private paths = {
-        notes: '/api/notes',
-        users: '/api/users',
-        labels: '/api/labels'
+        notes:  '/api/notes',
+        users:  '/api/users',
+        labels: '/api/labels',
+        auth:   '/api/auth'
     }
 
     constructor(){
@@ -45,6 +47,7 @@ class Server{
         this.app.use( this.paths.notes, notesRoutes)
         this.app.use( this.paths.users, usersRoutes)
         this.app.use( this.paths.labels, labelsRoutes)
+        this.app.use( this.paths.auth, authRoutes)
     }
 
     listen() {
